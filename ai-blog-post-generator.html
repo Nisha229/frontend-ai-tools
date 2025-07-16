@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="AI Blog Post Generator - Generate high-quality blog posts quickly with our AI-powered blog post generator tool.">
+  <meta name="keywords" content="AI blog generator, blog post generator, content creation, blog ideas">
+  <meta name="author" content="AI Tools Pro">
+  <title>Blog Post Generator - AI Tools Pro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+   
+
+    .card {
+      border: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .spinner-border {
+      display: none;
+    }
+
+    #output {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <i class="fas fa-robot me-2"></i>AI Tools Pro
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="fas fa-home me-1"></i>Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/summarizer.html">
+              <i class="fas fa-file-alt me-1"></i>Summarizer
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/paraphrasing-tool.html">
+              <i class="fas fa-sync-alt me-3"></i>Paraphrasing
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ai-blog-post-generator.html">
+              <i class="fas fa-pen-fancy me-3"></i>Blog Post Generator
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/tweet-ideas-generator.html">
+              <i class="fab fa-twitter me-1"></i>Tweet Ideas Generator
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/social-media-bio-generator.html">
+              <i class="fas fa-user-edit me-1"></i>Bio Generator
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Blog Post Generator -->
+  <div class="container" style="margin: 200px auto">
+     <h1 class="mb-4">Blog Post Generator</h4>
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card p-4">
+      
+          <div class="mb-3">
+            <label for="topic" class="form-label">Topic</label>
+            <textarea id="topic" class="form-control" rows="5" placeholder="Enter your blog topic..."></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="keywords" class="form-label">Keywords (comma separated)</label>
+            <input id="keywords" class="form-control" type="text" placeholder="e.g. meditation, rest, relief">
+          </div>
+          <button class="btn btn-primary w-100" onclick="generateBlog()">Generate Blog</button>
+          <div class="text-center mt-3">
+            <div class="spinner-border text-primary" role="status" id="loader">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="card p-4">
+          <h5 class="mb-3">Generated Blog Post</h5>
+          <div id="output" class="border rounded p-3 bg-light" style="min-height: 300px;">
+            <em>The blog post will appear here...</em>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4><i class="fas fa-robot me-2"></i>AI Tools Pro</h4>
+          <p>Empowering businesses with cutting-edge AI solutions. Transform your workflow with our
+            intelligent tools designed for the modern digital landscape.</p>
+          <div class="social-media">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Our Tools</h4>
+          <div class="footer-links">
+
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <i class="fas fa-home me-1"></i>Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/summarizer.html">
+                  <i class="fas fa-file-alt me-1"></i>Summarizer
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/paraphrasing-tool.html">
+                  <i class="fas fa-blog me-1"></i>Paraphrasing
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/ai-blog-post-generator.html">
+                  <i class="fas fa-blog me-1"></i>Blog Post Generator
+                </a>
+              </li>
+
+
+
+            </ul>
+
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Our Tools</h4>
+          <div class="footer-links">
+
+            <ul class="navbar-nav ms-auto">
+
+
+              <li class="nav-item">
+                <a class="nav-link" href="/tweet-ideas-generator.html">
+                  <i class="fab fa-twitter me-1"></i>Tweet Ideas Generator
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/social-media-bio-generator.html">
+                  <i class="fas fa-user-edit me-1"></i>Bio Generator
+                </a>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 AI Tools Pro. All Rights Reserved. | Designed with <i class="fas fa-heart"
+            style="color: #ff6b6b;"></i> for the future of AI</p>
+      </div>
+    </div>
+  </footer>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    async function generateBlog() {
+      const topic = document.getElementById('topic').value.trim();
+      const keywords = document.getElementById('keywords').value.trim();
+      const loader = document.getElementById('loader');
+      const output = document.getElementById('output');
+
+      if (!topic) {
+        alert("Please enter a topic.");
+        return;
+      }
+
+      loader.style.display = 'inline-block';
+      output.innerHTML = "";
+
+      try {
+        const response = await fetch("https://gemini-text-ai-tools.onrender.com/blog-post-generator", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            strategy: "gemini",
+            model: "gemini-2.0-flash",
+            options: {
+              topic: topic,
+              keyboard: keywords
+            }
+          })
+        });
+
+        const data = await response.json();
+        output.innerText = data.output || "No blog generated.";
+      } catch (error) {
+        output.innerText = "Error generating blog. Please try again.";
+        console.error("Blog Generation Error:", error);
+      } finally {
+        loader.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+
+</html>

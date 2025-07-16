@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Social Media Bio Generator - Create personalized social media bios for Instagram, Twitter, and LinkedIn effortlessly with AI.">
+  <meta name="keywords" content="AI bio generator, social media bio, Instagram bio, LinkedIn bio, Twitter bio, personal bio, AI tools">
+  <meta name="author" content="AI Tools Pro">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/style.css">
+  <title>Social Media Bio Generator - AI Tools Pro</title>
+ 
+  <style>
+   
+    .left-panel, .right-panel {
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #loader {
+      display: none;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    h2, h3 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-robot me-2"></i>AI Tools Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/summarizer.html">
+                            <i class="fas fa-file-alt me-1"></i>Summarizer
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/paraphrasing-tool.html">
+                            <i class="fas fa-sync-alt me-3"></i>Paraphrasing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ai-blog-post-generator.html">
+                            <i class="fas fa-pen-fancy me-3"></i>Blog Post Generator
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tweet-ideas-generator.html">
+                            <i class="fab fa-twitter me-1"></i>Tweet Ideas Generator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/social-media-bio-generator.html">
+                            <i class="fas fa-user-edit me-1"></i>Bio Generator
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Social Media Bio Generator -->
+  <div class="container" style="margin: 200px auto">
+    <div class="row g-4">
+       <h1 class="mb-4">📲 Social Media Bio Generator</h1>
+      <div class="col-md-6">
+        <div class="left-panel">
+          <!-- <h4 class="mb-3">📲 Social Media Bio Generator</h4> -->
+          <form id="bioForm">
+            <div class="mb-3">
+              <label for="platform" class="form-label">Platform</label>
+              <select class="form-control" id="platform">
+                <option>Instagram</option>
+                <option>Twitter</option>
+                <option>LinkedIn</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="profile_type" class="form-label">Profile Type</label>
+              <select class="form-control" id="profile_type">
+                <option>Personal</option>
+                <option>Professional</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="interests" class="form-label">Interests (comma-separated)</label>
+              <input type="text" class="form-control" id="interests" required />
+            </div>
+            <div class="mb-3">
+              <label for="tone" class="form-label">Tone</label>
+              <input type="text" class="form-control" id="tone" value="funny" />
+            </div>
+            <div class="mb-3">
+              <label for="language" class="form-label">Language</label>
+              <input type="text" class="form-control" id="language" value="English" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Generate Bio</button>
+          </form>
+          <div id="loader" class="text-center mt-3">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Generating bio...</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="right-panel">
+          <h4 class="mb-3">🧾 Generated Bio</h4>
+          <div id="output" style="overflow-y: auto; max-height: 600px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-robot me-2"></i>AI Tools Pro</h4>
+                    <p>Empowering businesses with cutting-edge AI solutions. Transform your workflow with our
+                        intelligent tools designed for the modern digital landscape.</p>
+                    <div class="social-media">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Our Tools</h4>
+                    <div class="footer-links">
+
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-home me-1"></i>Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/summarizer.html">
+                                    <i class="fas fa-file-alt me-1"></i>Summarizer
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/paraphrasing-tool.html">
+                                    <i class="fas fa-blog me-1"></i>Paraphrasing
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ai-blog-post-generator.html">
+                                    <i class="fas fa-blog me-1"></i>Blog Post Generator
+                                </a>
+                            </li>
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Our Tools</h4>
+                    <div class="footer-links">
+
+                        <ul class="navbar-nav ms-auto">
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tweet-ideas-generator.html">
+                                    <i class="fab fa-twitter me-1"></i>Tweet Ideas Generator
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/social-media-bio-generator.html">
+                                    <i class="fas fa-user-edit me-1"></i>Bio Generator
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Tools Pro. All Rights Reserved. | Designed with <i class="fas fa-heart"
+                        style="color: #ff6b6b;"></i> for the future of AI</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const form = document.getElementById('bioForm');
+    const loader = document.getElementById('loader');
+    const output = document.getElementById('output');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      loader.style.display = 'block';
+      output.innerHTML = '';
+
+      const platform = document.getElementById('platform').value;
+      const profile_type = document.getElementById('profile_type').value;
+      const interests = document.getElementById('interests').value.split(',').map(x => x.trim());
+      const tone = document.getElementById('tone').value;
+      const language = document.getElementById('language').value;
+
+      try {
+        const res = await fetch('https://gemini-text-ai-tools.onrender.com/social-media-bio-generator', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            strategy: 'gemini',
+            model: 'gemini-2.0-flash',
+            options: {
+              platform,
+              profile_type,
+              interests,
+              tone,
+              language
+            }
+          })
+        });
+
+        const data = await res.json();
+        output.innerHTML = `<pre>${data.output}</pre>`;
+      } catch (err) {
+        output.innerHTML = '<p class="text-danger">Error generating bio.</p>';
+        console.error(err);
+      } finally {
+        loader.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

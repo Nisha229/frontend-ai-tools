@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Tweet Idea Generator - Generate creative tweet ideas quickly with customized tone and style.">
+  <meta name="keywords" content="AI tweet generator, tweet ideas, twitter posts, creative tweets">
+  <meta name="author" content="AI Tools Pro">
+  <title>Tweet Idea Generator - AI Tools Pro</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/style.css">
+
+  <style>
+   
+    .btn-primary {
+      border-radius: 50px;
+    }
+    textarea {
+      resize: none;
+    }
+    #loader {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+    .tweet-item {
+      background: #fff;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-robot me-2"></i>AI Tools Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/summarizer.html">
+                            <i class="fas fa-file-alt me-1"></i>Summarizer
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/paraphrasing-tool.html">
+                            <i class="fas fa-sync-alt me-3"></i>Paraphrasing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ai-blog-post-generator.html">
+                            <i class="fas fa-pen-fancy me-3"></i>Blog Post Generator
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tweet-ideas-generator.html">
+                            <i class="fab fa-twitter me-1"></i>Tweet Ideas Generator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/social-media-bio-generator.html">
+                            <i class="fas fa-user-edit me-1"></i>Bio Generator
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Tweet Idea Generator -->
+  <div class="container" style="margin: 200px auto">
+     <h1 class="text-center mb-4">Tweet Idea Generator</h2>
+
+    <div class="card p-4">
+     
+      <form id="tweetForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Topic</label>
+            <input type="text" class="form-control" id="topic" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Tone</label>
+            <select class="form-select" id="tone">
+              <option>conversational</option>
+              <option>professional</option>
+              <option>funny</option>
+              <option>inspirational</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Creativity Level</label>
+            <select class="form-select" id="creativity_level">
+              <option>low</option>
+              <option>medium</option>
+              <option selected>high</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Point of View (POV)</label>
+            <select class="form-select" id="pov">
+              <option selected>1st person</option>
+              <option>2nd person</option>
+              <option>3rd person</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Target Audience</label>
+            <input type="text" class="form-control" id="target_audience" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Keyword</label>
+            <input type="text" class="form-control" id="keyword">
+          </div>
+          <div class="col-12">
+            <label class="form-label">Additional Instructions</label>
+            <textarea class="form-control" rows="3" id="additional_instructions">Keep each tweet under 280 characters and include a call-to-action.</textarea>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="hashtags_enabled" checked>
+              <label class="form-check-label">Enable Hashtags</label>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="create_thread">
+              <label class="form-check-label">Create Thread</label>
+            </div>
+          </div>
+          <div class="d-grid col-12">
+            <button type="submit" class="btn btn-primary">Generate Tweet Idea</button>
+          </div>
+        </div>
+      </form>
+      <div id="loader">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">Generating tweet ideas...</p>
+      </div>
+      <div class="mt-4">
+        <h5>Generated Tweets:</h5>
+        <div id="result" class="p-3 bg-light rounded"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-robot me-2"></i>AI Tools Pro</h4>
+                    <p>Empowering businesses with cutting-edge AI solutions. Transform your workflow with our
+                        intelligent tools designed for the modern digital landscape.</p>
+                    <div class="social-media">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Our Tools</h4>
+                    <div class="footer-links">
+
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-home me-1"></i>Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/summarizer.html">
+                                    <i class="fas fa-file-alt me-1"></i>Summarizer
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/paraphrasing-tool.html">
+                                    <i class="fas fa-blog me-1"></i>Paraphrasing
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ai-blog-post-generator.html">
+                                    <i class="fas fa-blog me-1"></i>Blog Post Generator
+                                </a>
+                            </li>
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Our Tools</h4>
+                    <div class="footer-links">
+
+                        <ul class="navbar-nav ms-auto">
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tweet-ideas-generator.html">
+                                    <i class="fab fa-twitter me-1"></i>Tweet Ideas Generator
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/social-media-bio-generator.html">
+                                    <i class="fas fa-user-edit me-1"></i>Bio Generator
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Tools Pro. All Rights Reserved. | Designed with <i class="fas fa-heart"
+                        style="color: #ff6b6b;"></i> for the future of AI</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('tweetForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const loader = document.getElementById('loader');
+      const result = document.getElementById('result');
+      loader.style.display = 'block';
+      result.innerHTML = '';
+
+      const payload = {
+        strategy: "gemini",
+        model: "gemini-2.0-flash",
+        options: {
+          topic: document.getElementById('topic').value,
+          hashtags_enabled: document.getElementById('hashtags_enabled').checked,
+          create_thread: document.getElementById('create_thread').checked,
+          tone: document.getElementById('tone').value,
+          language: "English",
+          creativity_level: document.getElementById('creativity_level').value,
+          pov: document.getElementById('pov').value,
+          target_audience: document.getElementById('target_audience').value,
+          keyword: document.getElementById('keyword').value,
+          additional_instructions: document.getElementById('additional_instructions').value,
+        }
+      };
+
+      try {
+        const res = await fetch('https://gemini-text-ai-tools.onrender.com/generate-tweet-ideas', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (Array.isArray(data.tweet_ideas)) {
+          data.tweet_ideas.forEach(item => {
+            const tweetDiv = document.createElement('div');
+            tweetDiv.className = 'tweet-item';
+            tweetDiv.innerText = item.text;
+            result.appendChild(tweetDiv);
+          });
+        } else {
+          result.innerText = 'No tweet ideas returned.';
+        }
+      } catch (error) {
+        result.innerText = 'Error generating tweet ideas.';
+      } finally {
+        loader.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

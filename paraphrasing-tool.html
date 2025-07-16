@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paraphrasing Tool</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/style.css">
+ 
+  <style>
+
+    .left-box, .right-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+    .left-box textarea {
+      resize: none;
+      height: 200px;
+    }
+    .btn-primary {
+      border-radius: 25px;
+    }
+    .loader {
+      display: none;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .paraphrased-box {
+      white-space: pre-wrap;
+      min-height: 200px;
+    }
+  </style>
+</head>
+<body>
+   <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-robot me-2"></i>AI Tools Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/summarizer.html">
+                            <i class="fas fa-file-alt me-1"></i>Summarizer
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/paraphrasing-tool.html">
+                            <i class="fas fa-sync-alt me-3"></i>Paraphrasing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ai-blog-post-generator.html">
+                            <i class="fas fa-pen-fancy me-3"></i>Blog Post Generator
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tweet-ideas-generator.html">
+                            <i class="fab fa-twitter me-1"></i>Tweet Ideas Generator
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/social-media-bio-generator.html">
+                            <i class="fas fa-user-edit me-1"></i>Bio Generator
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container" style="margin: 200px auto">
+  <div class="row g-4">
+     <h1 class="mb-4">Paraphasing Tool</h1>
+    <!-- Input Area -->
+    <div class="col-md-6">
+      <div class="left-box">
+        <h5>Enter text to paraphrase</h5>
+        <textarea class="form-control mt-3" id="inputText" placeholder="Type or paste your sentence..."></textarea>
+        <div class="d-grid mt-4">
+          <button id="paraphraseBtn" class="btn btn-primary">Paraphrase</button>
+        </div>
+        <div id="loader" class="loader">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-2">Rewriting...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Output Area -->
+    <div class="col-md-6">
+      <div class="right-box">
+        <h5>Paraphrased Text</h5>
+        <div id="outputParaphrase" class="paraphrased-box mt-3 text-muted"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-robot me-2"></i>AI Tools Pro</h4>
+                    <p>Empowering businesses with cutting-edge AI solutions. Transform your workflow with our
+                        intelligent tools designed for the modern digital landscape.</p>
+                    <div class="social-media">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Our Tools</h4>
+                    <div class="footer-links">
+
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">
+                                    <i class="fas fa-home me-1"></i>Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/summarizer.html">
+                                    <i class="fas fa-file-alt me-1"></i>Summarizer
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/paraphrasing-tool.html">
+                                    <i class="fas fa-blog me-1"></i>Paraphrasing
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ai-blog-post-generator.html">
+                                    <i class="fas fa-blog me-1"></i>Blog Post Generator
+                                </a>
+                            </li>
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Our Tools</h4>
+                    <div class="footer-links">
+
+                        <ul class="navbar-nav ms-auto">
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/tweet-ideas-generator.html">
+                                    <i class="fab fa-twitter me-1"></i>Tweet Ideas Generator
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/social-media-bio-generator.html">
+                                    <i class="fas fa-user-edit me-1"></i>Bio Generator
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Tools Pro. All Rights Reserved. | Designed with <i class="fas fa-heart"
+                        style="color: #ff6b6b;"></i> for the future of AI</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.getElementById("paraphraseBtn").addEventListener("click", async () => {
+    const inputText = document.getElementById("inputText").value.trim();
+    const output = document.getElementById("outputParaphrase");
+    const loader = document.getElementById("loader");
+
+    if (!inputText) {
+      output.innerText = "Please enter text to paraphrase.";
+      return;
+    }
+
+    loader.style.display = "block";
+    output.innerText = "";
+
+    const payload = {
+      strategy: "gemini",
+      model: "gemini-2.0-flash",
+      options: {
+        input: inputText
+      }
+    };
+
+    try {
+      const res = await fetch("https://gemini-text-ai-tools.onrender.com/paraphrase", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      output.innerText = data.output || "No paraphrased text returned.";
+    } catch (error) {
+      output.innerText = "Error generating paraphrase.";
+    } finally {
+      loader.style.display = "none";
+    }
+  });
+</script>
+</body>
+</html>
