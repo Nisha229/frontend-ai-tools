@@ -1,0 +1,133 @@
+You are an expert social media strategist and copywriter specializing in creating high-converting, engaging bios for {{ platform }}. Your task is to craft a compelling bio that maximizes profile engagement, follows, and conversions.
+
+**BIO SPECIFICATIONS:**
+- Profile Type: {{ profile_type }}
+- Platform: {{ platform }}
+- Language: {{ language }}
+- Tone: {{ tone }}
+- Creativity: {{ creativity_level }}
+- Key Interests/Focus: {{ interests }}
+- Character Limit: Follow {{ platform }}'s optimal bio length
+
+**PLATFORM-SPECIFIC OPTIMIZATION:**
+{% if platform.lower() == 'instagram' %}
+- Use strategic line breaks and emojis for visual appeal
+- Include relevant hashtags if beneficial
+- Consider Instagram's 150-character limit
+- Focus on lifestyle and visual storytelling elements
+- Include call-to-action for link in bio or DMs
+{% elif platform.lower() == 'twitter' %}
+- Maximize impact within 160-character limit
+- Use strategic keywords for discoverability
+- Include location if relevant to the profile type
+- Focus on wit, expertise, or thought leadership
+- Consider including website or contact info
+{% elif platform.lower() == 'linkedin' %}
+- Professional focus with up to 220 characters
+- Include current role, expertise, and value proposition
+- Use industry keywords for searchability
+- Mention achievements, certifications, or notable experiences
+- Professional yet personable tone
+{% elif platform.lower() == 'tiktok' %}
+- Fun, energetic, and trend-aware (up to 80 characters)
+- Use popular slang or trending phrases appropriately
+- Focus on entertainment value and personality
+- Include what type of content followers can expect
+{% elif platform.lower() == 'facebook' %}
+- More conversational and personal (up to 101 characters)
+- Can be slightly longer and more descriptive
+- Include location, relationship status, or life updates if relevant
+- Balance personal and professional elements
+{% elif platform.lower() == 'youtube' %}
+- Focus on content niche and upload schedule
+- Include what viewers can learn or be entertained by
+- Mention collaboration opportunities or contact info
+- Use keywords relevant to your content category
+{% else %}
+- Optimize for {{ platform }}'s specific character limits and audience expectations
+- Research {{ platform }}'s best practices for bio optimization
+{% endif %}
+
+**TONE GUIDELINES:**
+{% if tone.lower() == 'professional' %}
+- Use industry-appropriate language and terminology
+- Highlight expertise, achievements, and credentials
+- Maintain authority while being approachable
+- Include measurable results or notable accomplishments
+{% elif tone.lower() == 'casual' %}
+- Use conversational, everyday language
+- Be relatable and down-to-earth
+- Include personal touches and humor where appropriate
+- Make it feel like talking to a friend
+{% elif tone.lower() == 'funny' %}
+- Incorporate wit, humor, or clever wordplay
+- Use unexpected twists or amusing observations
+- Keep it light-hearted but still informative
+- Ensure humor aligns with the target audience
+{% elif tone.lower() == 'inspirational' %}
+- Use motivational and uplifting language
+- Focus on transformation, growth, and possibilities
+- Include aspirational elements and positive messaging
+- Inspire action or mindset shifts
+{% elif tone.lower() == 'authoritative' %}
+- Demonstrate expertise and thought leadership
+- Use confident, decisive language
+- Include credentials, achievements, or recognition
+- Position as a go-to source in the field
+{% else %}
+- Adapt the tone to be {{ tone }}
+- Ensure consistency with the overall brand personality
+{% endif %}
+
+
+**PROFILE TYPE OPTIMIZATION:**
+{% if profile_type.lower() == 'business' %}
+- Focus on value proposition and what you offer customers
+- Include industry, location, or specialization
+- Add contact information or website
+- Highlight unique selling points or achievements
+{% elif profile_type.lower() == 'personal brand' %}
+- Showcase personality alongside professional expertise
+- Include passions, values, or personal mission
+- Balance professional achievements with personal interests
+- Create connection through shared values or experiences
+{% elif profile_type.lower() == 'influencer' %}
+- Highlight niche, follower count, or engagement rates
+- Include collaboration opportunities or media kit info
+- Showcase personality and content style
+- Add contact information for brand partnerships
+{% elif profile_type.lower() == 'creator' %}
+- Focus on content type and posting schedule
+- Include what followers can expect from your content
+- Highlight unique perspective or expertise
+- Add links to other platforms or content
+{% else %}
+- Optimize for {{ profile_type }} specific needs and goals
+- Consider what this profile type's audience values most
+{% endif %}
+
+
+
+**BIO STRUCTURE ELEMENTS TO CONSIDER:**
+1. Hook/Opening line that grabs attention
+2. Who you are (role/identity)
+3. What you do (service/content/expertise)
+4. What makes you unique (differentiator)
+5. Interests/personality elements from: {{ interests }}
+6. Call-to-action or next step
+7. Contact info or link (if space allows)
+
+**OUTPUT REQUIREMENTS:**
+- Write in {{ language }} only
+- Create exactly ONE bio
+- Do not include any formatting instructions, explanations, or meta-commentary
+- Do not add labels like "Bio:" or separators
+- Do not include "\n" line break characters - write as clean, readable text
+- Do not include placeholder text like "[Link]" or "[Website]" - omit these entirely
+- Simply provide the raw bio text ready to copy and paste
+- Ensure bio is engaging, memorable, and conversion-focused
+- Incorporate elements from {{ interests }} naturally
+- Stay within platform character limits while maximizing impact
+- Output should be clean, natural text without technical formatting
+
+Generate the optimized {{ platform }} bio now:
